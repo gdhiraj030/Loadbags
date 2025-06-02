@@ -1,0 +1,457 @@
+/* Import Fredoka One font for a fun, rounded cartoon feel */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+/* Basic Reset & Body Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Fredoka One', cursive; /* Fun, rounded font */
+  background-color: #f8e7a1; /* Muted pastel yellow background */
+  color: #333333; /* Dark gray text for contrast */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align to top for better scroll behavior */
+  min-height: 100vh;
+  padding: 20px;
+  overflow-y: auto; /* Allow scrolling for long lists */
+}
+
+.app-container {
+  background-color: #ffffff; /* White background for the app card */
+  border: 4px solid #333333; /* Thicker, cartoon-like border */
+  border-radius: 15px; /* Slightly more rounded corners */
+  box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.2); /* Exaggerated, offset shadow */
+  width: 100%;
+  max-width: 500px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  position: relative; /* For potential future decorative elements */
+}
+
+/* Header Styles */
+header {
+  text-align: center;
+  padding-bottom: 15px;
+  border-bottom: 3px dashed #ff6b6b; /* Dashed, playful border */
+  transform: rotate(-2deg); /* Slightly skewed for fun */
+  margin-bottom: 15px;
+}
+
+header h1 {
+  font-size: 2.8em; /* Larger, more impactful title */
+  color: #ff6b6b; /* Vibrant Red for the title */
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 1px;
+  text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1); /* Subtle text shadow */
+}
+
+/* Form Styles */
+.add-item-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-item-form input[type='number'],
+.add-item-form input[type='text'] {
+  padding: 12px 18px;
+  border: 3px solid #333333; /* Thicker border for inputs */
+  border-radius: 10px;
+  font-size: 1.1em;
+  font-family: 'Fredoka One', cursive;
+  background-color: #fff;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1); /* Input shadow */
+  transition: all 0.2s ease;
+}
+
+.add-item-form input[type='number'] {
+  width: 80px;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+
+.add-item-form input[type='number']::-webkit-outer-spin-button,
+.add-item-form input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.add-item-form input:focus {
+  outline: none;
+  border-color: #4ecdc4; /* Teal focus border */
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.15);
+}
+
+.add-item-form button {
+  background-color: #4ecdc4; /* Vibrant Teal */
+  color: white;
+  padding: 12px 25px;
+  border: 3px solid #333333; /* Thicker border */
+  border-radius: 10px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+  font-weight: normal;
+  font-family: 'Fredoka One', cursive;
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2); /* Button shadow */
+}
+
+.add-item-form button:hover {
+  background-color: #3bbdb5; /* Slightly darker teal on hover */
+  transform: translateY(-3px) translateX(-3px); /* Bouncy effect */
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.25);
+}
+
+.add-item-form button:active {
+  transform: translateY(0) translateX(0);
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* Item List Styles */
+.item-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+}
+
+.item-list li {
+  background-color: #ffffff; /* White background for list items */
+  padding: 15px 20px;
+  border: 3px solid #333333; /* Thicker item border */
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.15); /* Item shadow */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.item-list li:hover {
+  transform: translateY(-3px) translateX(-3px);
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.2);
+}
+
+.item-list li.packed {
+  background-color: #d1f2eb; /* Light teal/greenish for packed items */
+  opacity: 0.8;
+  text-decoration: line-through;
+  color: #666;
+  border-color: #666; /* Muted border for packed */
+}
+
+.item-list li span {
+  flex-grow: 1;
+  margin-right: 15px;
+  font-weight: normal;
+  font-size: 1.1em;
+}
+
+.item-list li .item-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.item-list li button {
+  background: none;
+  border: none;
+  font-size: 1.5em; /* Larger icons */
+  cursor: pointer;
+  color: #ff6b6b; /* Red for action icons */
+  transition: color 0.2s ease, transform 0.2s ease;
+  font-family: sans-serif; /* Fallback for unicode characters like emoji */
+}
+
+.item-list li button:hover {
+  color: #e74c3c; /* Darker red on hover */
+  transform: scale(1.2) rotate(5deg); /* More exaggerated hover */
+}
+
+.item-list li button.delete-btn {
+  color: #e74c3c; /* Red for delete button */
+}
+
+.item-list li button.delete-btn:hover {
+  color: #c0392b;
+}
+
+.item-list li input[type='checkbox'] {
+  margin-right: 10px;
+  width: 22px; /* Larger checkbox */
+  height: 22px;
+  cursor: pointer;
+  accent-color: #78b978; /* Green accent for checkbox */
+  border: 2px solid #333; /* Checkbox border */
+  border-radius: 5px; /* Slightly rounded checkbox */
+}
+
+/* Footer Styles */
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding-top: 20px;
+  border-top: 3px dashed #ffcd3c; /* Dashed, playful border */
+  text-align: center;
+}
+
+footer p {
+  font-size: 1.1em;
+  color: #555;
+  font-weight: normal;
+}
+
+.footer-actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  justify-content: center;
+}
+
+.footer-actions select {
+  background-color: #ffcd3c; /* Bright Yellow/Orange */
+  color: #333333; /* Dark text on yellow */
+  padding: 12px 25px;
+  border: 3px solid #333333;
+  border-radius: 10px;
+  font-size: 1.05em;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+  font-weight: normal;
+  font-family: 'Fredoka One', cursive;
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+}
+.footer-actions button {
+  color: #333333;
+  padding: 12px 25px;
+  border: 3px solid #333333;
+  border-radius: 10px;
+  font-size: 1.05em;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+  font-weight: normal;
+  font-family: 'Fredoka One', cursive;
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.footer-actions select:hover {
+  background-color: #ffb700; /* Slightly darker yellow */
+  transform: translateY(-3px) translateX(-3px);
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.25);
+}
+.footer-actions button:hover {
+  background-color: #ffb700; /* Slightly darker yellow */
+  transform: translateY(-3px) translateX(-3px);
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.25);
+}
+
+.footer-actions select:active {
+  transform: translateY(0) translateX(0);
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+}
+.footer-actions button:active {
+  transform: translateY(0) translateX(0);
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+}
+
+.footer-actions button.clear-btn {
+  background-color: #e74c3c; /* Red for clear button */
+  color: white;
+}
+
+.footer-actions button.clear-btn:hover {
+  background-color: #c0392b;
+}
+
+/* Custom Modal Styles (matching the new theme) */
+.custom-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Darker overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.custom-modal-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.custom-modal-content {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.2); /* Exaggerated shadow */
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  transform: translateY(-20px);
+  transition: transform 0.3s ease;
+  border: 4px solid #333333; /* Thicker border */
+  font-family: 'Fredoka One', cursive;
+}
+
+.custom-modal-overlay.visible .custom-modal-content {
+  transform: translateY(0);
+}
+
+.custom-modal-content p {
+  margin-bottom: 25px;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.custom-modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.custom-modal-buttons button {
+  background-color: #e74c3c; /* Red for confirm */
+  color: white;
+  padding: 12px 25px;
+  border: 3px solid #333333;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: background-color 0.2s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+  font-family: 'Fredoka One', cursive;
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.custom-modal-buttons button:hover {
+  background-color: #c0392b;
+  transform: translateY(-3px) translateX(-3px);
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.25);
+}
+
+.custom-modal-buttons button:active {
+  transform: translateY(0) translateX(0);
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+}
+
+.custom-modal-buttons button:last-child {
+  /* Cancel button */
+  background-color: #4ecdc4; /* Teal for cancel */
+}
+
+.custom-modal-buttons button:last-child:hover {
+  background-color: #3bbdb5;
+}
+.custom-modal-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  .app-container {
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.15); /* Smaller shadow on mobile */
+  }
+
+  header {
+    transform: rotate(0deg); /* No rotation on small screens */
+  }
+
+  header h1 {
+    font-size: 2.2em;
+  }
+
+  .add-item-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .add-item-form input[type='number'],
+  .add-item-form input[type='text'],
+  .add-item-form button {
+    width: 100%;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+  }
+  .add-item-form button:hover {
+    transform: translateY(-2px) translateX(-2px);
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.15);
+  }
+  .add-item-form button:active {
+    transform: translateY(0) translateX(0);
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.05);
+  }
+
+  .item-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+  }
+  .item-list li:hover {
+    transform: translateY(-2px) translateX(-2px);
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.15);
+  }
+
+  .item-list li .item-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .footer-actions button {
+    width: 100%;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+  }
+  .footer-actions button:hover {
+    transform: translateY(-2px) translateX(-2px);
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.15);
+  }
+  .footer-actions button:active {
+    transform: translateY(0) translateX(0);
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.05);
+  }
+
+  .custom-modal-content {
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.15);
+  }
+  .custom-modal-buttons button {
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+  }
+  .custom-modal-buttons button:hover {
+    transform: translateY(-2px) translateX(-2px);
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.15);
+  }
+}
